@@ -1,6 +1,6 @@
 package main.collectionex.pgms;
 
-import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CopyOnWriteArrayListEx {
@@ -17,7 +17,8 @@ public class CopyOnWriteArrayListEx {
     System.out.println("Iterating elements using for-each loop");
     for (Integer num : al) {
       if (num == 60) {
-        // Here it will add the element by creating new array of elements and then re-assign the array to this array
+        // Here it will add the element by creating new array of elements and then
+        // re-assign the array to this array
         // So, it won't print the newly added elements
         al.add(35);
       }
@@ -26,21 +27,25 @@ public class CopyOnWriteArrayListEx {
     System.out.println(al);
 
     System.out.println("Iterating elements using iterator");
-    Iterator<Integer> it = al.iterator();
+    ListIterator<Integer> it = al.listIterator();
     while (it.hasNext()) {
       Integer num = it.next();
       if (num == 60) {
-        // Here it will add the element by creating new array of elements and then re-assign the array to this array
+        // Here it will add the element by creating new array of elements and then
+        // re-assign the array to this array
         // So, it won't print the newly added elements
-        al.add(80); 
+        al.add(80);
       }
       if (num == 35) {
-        // This below line will throw UnsupportedException since it is a cloned or copy of array we are iterating
+        // This below line will throw UnsupportedException since it is a cloned or copy
+        // of array we are iterating
+        // It won't support add, remove or set operation
         // it.remove();
+        // it.add(36);
       }
       System.out.println(num);
     }
-    
-    System.out.println("Final list elements :"+al);
+
+    System.out.println("Final list elements :" + al);
   }
 }
