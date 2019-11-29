@@ -26,7 +26,7 @@ public class SerializationWithInheritanceEx {
     Child c = new Child();
 
     try (ObjectOutputStream oos = new ObjectOutputStream(
-        new FileOutputStream("G:\\Photon workspace\\Practice_1\\inheritance-ex.ser"))) {
+        new FileOutputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\inheritance-ex.ser"))) {
       c.setParentId(25); // Here we are updating parent id as 25
       c.setChildId(35);
       oos.writeObject(c);
@@ -34,7 +34,7 @@ public class SerializationWithInheritanceEx {
     }
 
     try (ObjectInputStream oos = new ObjectInputStream(
-        new FileInputStream("G:\\Photon workspace\\Practice_1\\inheritance-ex.ser"))) {
+        new FileInputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\inheritance-ex.ser"))) {
       Child c1 = (Child) oos.readObject();
       System.out.println(c1);
       System.out.println("Parent id :" + c1.getParentId()); // But here we will get constructor initialized value only

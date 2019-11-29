@@ -15,7 +15,7 @@ public class SerializationInSingleton {
     c.setCollegeName("Anna university");
 
     try (ObjectOutputStream oos = new ObjectOutputStream(
-        new FileOutputStream("G:\\Photon workspace\\Practice_1\\singletonex.ser"))) {
+        new FileOutputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\singletonex.ser"))) {
       oos.writeObject(c);
       System.out.println("Serialization completed");
     }
@@ -24,7 +24,7 @@ public class SerializationInSingleton {
     System.out.println("c object value :" + c);
 
     try (ObjectInputStream oos = new ObjectInputStream(
-        new FileInputStream("G:\\Photon workspace\\Practice_1\\singletonex.ser"))) {
+        new FileInputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\singletonex.ser"))) {
       c1 = (College) oos.readObject();
       System.out.println("Deserialization completed");
     }

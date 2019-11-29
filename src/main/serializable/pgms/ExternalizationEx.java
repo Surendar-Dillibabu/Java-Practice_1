@@ -29,14 +29,14 @@ import java.io.ObjectOutputStream;
 public class ExternalizationEx {
 
   public static void main(String[] args) throws IOException, ClassNotFoundException {
-    try (FileOutputStream fos = new FileOutputStream("G:\\Photon workspace\\Practice_1\\externalize-ex.ser");
+    try (FileOutputStream fos = new FileOutputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\externalize-ex.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);) {
       AccountDetails accountDetails = new AccountDetails(1000L, "Surendar", 27);
       oos.writeObject(accountDetails);
       System.out.println("accountDetails :" + accountDetails);
       System.out.println("Object written to the file");
 
-      try (FileInputStream fis = new FileInputStream("G:\\Photon workspace\\Practice_1\\externalize-ex.ser");
+      try (FileInputStream fis = new FileInputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\externalize-ex.ser");
           ObjectInputStream ois = new ObjectInputStream(fis);) {
         AccountDetails accDetails = (AccountDetails) ois.readObject();
         System.out.println("accDetails :" + accDetails);

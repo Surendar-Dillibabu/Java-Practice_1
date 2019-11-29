@@ -10,13 +10,13 @@ import java.io.ObjectOutputStream;
  * In this example you can see we are not providing default serialVersionUID, so
  * the JVM will generate the serialVersionUID based on the structure. Now, it
  * will serialize the element with the serialVersionUID. Then if you try to
- * deserialize then you can see the propety values without any issue. But if you
- * add any more new property in the Employee class means then JVM will have
- * created new serialVersionUID based on the new structure. Now if you try to
- * deserialize means you will get InvalidClassException since while
- * deserializing JVM will check whether the serialied serialVersionUID is
- * matching with the class. If not matched then it will throw
- * InvalidClassException.
+ * deserialize it means you can see the propety values without any issue. But if
+ * you add any more new property in the Employee class after the serialization
+ * means then JVM will have created new serialVersionUID based on the new
+ * structure. Now if you try to deserialize the object which is already
+ * serialized means you will get InvalidClassException since while deserializing
+ * JVM will check whether the serialied serialVersionUID is matching with the
+ * class. If not matched then it will throw InvalidClassException.
  * 
  * That's why it is always a good practice to declare our own serialVersionUID
  * without depending on JVM compiler to generate it.

@@ -13,7 +13,7 @@ public class SerializationEx {
     // class also must implement Serailizable in order to achieve serialization
     Department d1 = new Department(100, "CSE");
     Student s1 = new Student(1, "Surendar", 27, 9413332132L, d1);
-    FileOutputStream fos = new FileOutputStream("G:\\Photon workspace\\Practice_1\\serialization-ex.ser");
+    FileOutputStream fos = new FileOutputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\serialization-ex.ser");
     ObjectOutputStream oos = new ObjectOutputStream(fos);
     oos.writeObject(s1);
     oos.close();

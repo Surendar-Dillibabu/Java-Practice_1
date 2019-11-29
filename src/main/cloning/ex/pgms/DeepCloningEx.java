@@ -10,7 +10,9 @@ public class DeepCloningEx {
     ls.add("Hotcourses");
     ls.add("Sella");
 
-    Employee emp1 = new Employee(100, "Surendar", ls);
+    EmployeeAddress empAdd = new EmployeeAddress(10, "North street");
+
+    Employee emp1 = new Employee(100, "Surendar", empAdd, ls);
     System.out.println("emp1 object :" + emp1);
 
     Employee emp2 = emp1.clone();
@@ -18,8 +20,15 @@ public class DeepCloningEx {
     // Adding one more working company after cloned.
     ls.add("FreshWorks");
 
+    // Updating the employee address object
+    empAdd.setStreetName("South street");
+
     // Changing employee id
     emp2.setEmployeeId(200);
+
+    // Changing employee address
+    emp2.getEmpAddress().setStreetName("East street");
+
     // Adding one more working company in the list which is present in the cloned
     // object
     emp2.getListOfCompanyWorked().add("Amazon");

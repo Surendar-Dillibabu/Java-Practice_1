@@ -8,11 +8,14 @@ public class Student implements Cloneable {
 
   private String studentName;
 
+  private StudentAddress address;
+
   private List<String> subjectList;
 
-  Student(int studentId, String studentName, List<String> subjectList) {
+  Student(int studentId, String studentName, StudentAddress address, List<String> subjectList) {
     this.studentId = studentId;
     this.studentName = studentName;
+    this.address = address;
     this.subjectList = subjectList;
   }
 
@@ -30,6 +33,14 @@ public class Student implements Cloneable {
 
   public void setStudentName(String studentName) {
     this.studentName = studentName;
+  }
+
+  public StudentAddress getAddress() {
+    return address;
+  }
+
+  public void setAddress(StudentAddress address) {
+    this.address = address;
   }
 
   public List<String> getSubjectList() {
@@ -51,7 +62,8 @@ public class Student implements Cloneable {
 
   @Override
   public String toString() {
-    return "Student [studentId=" + studentId + ", studentName=" + studentName + ", subjectList=" + subjectList + "]";
+    return "Student [studentId=" + studentId + ", studentName=" + studentName + ", address=" + address
+        + ", subjectList=" + subjectList + "]";
   }
 
 }
