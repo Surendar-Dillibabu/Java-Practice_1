@@ -1,11 +1,21 @@
 package main.interview.pgms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class ArrayListReverseEx {
 
   public static void main(String[] args) {
+    long[] numArr = new long[100];
+    
+    for(int lp1 = 0; lp1 < numArr.length; lp1++) {
+      System.out.print(Math.random()+" ");
+      // numArr[lp1] = Math.round(Math.random());
+    }
+    
+    System.out.println(Arrays.toString(numArr));
+    
     ArrayListReverseEx obj = new ArrayListReverseEx();
     ArrayList<Integer> al = new ArrayList<>();
     al.add(10);

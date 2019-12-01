@@ -1,31 +1,53 @@
 package main.arrays.ex.pgms;
 
+import java.util.HashSet;
+
 public class FindDuplicateNumber {
 
   public static void main(String[] args) {
-    int[] numArr = new int[] { 0, 2, 9, 14, 4, 7, 8, 0 }; // Number 0 also present in the loop
+    FindDuplicateNumber obj = new FindDuplicateNumber();
+    int[] numArr = new int[] { 0, 2, 9, 14, 4, 7, 8, 10, 9, 15 }; // Number 0 also present in the loop
+    obj.findDuplicateNumberByLooping(numArr);
+    // obj.findDuplicateNumByHashSet(numArr);
+  }
+
+  public void findDuplicateNumberByLooping(int[] numArr) {
     int duplicateNumber = 0;
-    int loopCount = 0;
+    boolean duplicatePresent = false;
     int arrLength = numArr.length;
-    // Formula - ((n - 1) * (n - 2) / 2) + (n - 1)
-    int seqTotal = ((arrLength - 1) * (arrLength - 2) / 2) + (arrLength - 1);
 
     outer: for (int lp1 = 0; lp1 < arrLength; lp1++) {
       for (int lp2 = (lp1 + 1); lp2 < arrLength; lp2++) {
         if (numArr[lp1] == numArr[lp2]) {
           duplicateNumber = numArr[lp1];
+          duplicatePresent = true;
           break outer;
-        } else {
-          loopCount++;
         }
       }
     }
 
-    // Here based on the loop count we are finding the
-    if (loopCount == seqTotal) {
-      System.out.println("No duplicates present in the array");
-    } else {
+    if (duplicatePresent) {
       System.out.println("Duplicate number present in the array is :" + duplicateNumber);
+    } else {
+      System.out.println("No duplicates present in the array");
+    }
+  }
+
+  public void findDuplicateNumByHashSet(int[] numArr) {
+    HashSet<Integer> hs = new HashSet<>(numArr.length);
+    int duplicateNumber = 0;
+    boolean duplicatePresent = false;
+    for (int lp1 = 0; lp1 < numArr.length; lp1++) {
+      if (!hs.add(numArr[lp1])) {
+        duplicatePresent = true;
+        duplicateNumber = numArr[lp1];
+      }
+    }
+
+    if (duplicatePresent) {
+      System.out.println("Duplicate number present in the array is :" + duplicateNumber);
+    } else {
+      System.out.println("No duplicates present in the array");
     }
   }
 }

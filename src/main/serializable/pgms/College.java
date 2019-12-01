@@ -45,8 +45,8 @@ public class College implements Serializable {
     return false;
   }
 
-  // readResolve method will be called when deserialization and it will always
-  // return the singleton object
+  // readResolve method will be called when deserialization happen and it will
+  // always return the singleton object
   public Object readResolve() {
     return INSTANCE;
   }
