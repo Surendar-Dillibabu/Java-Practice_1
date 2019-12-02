@@ -1,13 +1,15 @@
 package main.thread.ex.pgms;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 class CustomerThread extends Thread {
 
-  private static Integer custId = 0;
+  private static AtomicInteger custId = new AtomicInteger(1);
 
   private static ThreadLocal<Integer> tl = new ThreadLocal<Integer>() {
 
     protected Integer initialValue() {
-      return ++custId;
+      return custId.getAndIncrement();
     }
   };
 

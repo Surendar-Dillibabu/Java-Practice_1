@@ -18,4 +18,8 @@ public class FindUnionOfTwoArr {
 
     System.out.println("Combined elements are :" + hs);
   }
+  
+  public void m1(int... a) {
+    
+  }
 }
