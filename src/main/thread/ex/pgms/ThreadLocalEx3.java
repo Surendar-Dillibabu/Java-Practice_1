@@ -18,7 +18,6 @@ class ParentThread extends Thread {
     System.out.println("Thread " + Thread.currentThread().getName() + " started. Thread local value is :" + tl.get());
     tl.set(10);
     System.out.println("Thread local after setting :" + tl.get());
-    System.out.println();
     ChildThread6 ct = new ChildThread6("Child-thread");
     ct.start();
   }

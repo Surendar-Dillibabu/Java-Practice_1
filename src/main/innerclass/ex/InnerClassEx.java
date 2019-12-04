@@ -2,6 +2,8 @@ package main.innerclass.ex;
 
 
 public class InnerClassEx {
+  
+  public static int t = 52;
 
   public void m1() {
     int x = 10;
@@ -9,6 +11,8 @@ public class InnerClassEx {
     class InnerClass {
       public void m2() {
         System.out.println(x);
+        System.out.println(t);
+        m3();
       }
     }
     
@@ -20,4 +24,9 @@ public class InnerClassEx {
     InnerClassEx ie = new InnerClassEx();
     ie.m1();
   }
+  
+  public void m3() {
+    System.out.println(t);
+  }
 }
+

@@ -4,7 +4,7 @@ public class AlternatePositiveNegativeEx {
 
   public static void main(String[] args) {
     int[] numArr = { 1, 2, 3, -4, -1, 4, -8, -7, 5, 18 }; // { -5, -2, 5, 2, 4, 7, 1, 8, 0, -8 };
-    int temp = 0;
+    int temp = 0;    
     boolean negativeFlag = false;
     boolean postiveFlag = true;
     boolean movementFlag = false;

@@ -14,9 +14,9 @@ public class ProductProducer implements Runnable {
   public void run() {
     System.out.println("Product producer thread started");
     // queue add method will throw IllegalStateException incase the queue is full
-    // queue put method will wait for queue to get some space. But it will throw
-    // InterruptedException since while waiting if any thread tries to interrupt the
-    // queue
+    // while adding. But queue put method will wait for queue to get some space. But
+    // it will throw InterruptedException since while waiting if any thread tries to
+    // interrupt the queue
     try {
       for (int lp1 = 1; lp1 <= 10; lp1++) {
         Product p = new Product(lp1, "Product-" + lp1);
