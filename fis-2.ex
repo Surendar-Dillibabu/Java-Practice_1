@@ -1,0 +1,1 @@
+File output steam example with byte[] writing

@@ -1,0 +1,1 @@
+Writting data into the file using BufferedWriter

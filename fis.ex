@@ -1,0 +1,1 @@
+Buffered output steam example with writing byte array
