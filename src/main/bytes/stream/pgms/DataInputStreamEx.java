@@ -24,7 +24,7 @@ public class DataInputStreamEx {
 
   public static void main(String[] args) throws IOException {
     try (DataInputStream dis = new DataInputStream(
-        new FileInputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\files\\datastream.ex"))) {
+        new FileInputStream("G://Photon workspace//Java-projects//Practice_1//files//datastream.ex"))) {
       int data = 0;
       while ((data = dis.readInt()) != -1) {
         System.out.print(data + " ");

@@ -7,15 +7,22 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * In this example if you the parent class is not serialized but the child class
- * is serialized. If we serialize and deserialize the child class object then
- * automatically through constructor chaining the corresponding parent class
- * constructor will be called. So, it will allocate the default values or
- * constructor initialized values Since through object
+ * In this example if you not made the parent class is serializable but the
+ * child class is serializable. If we serialize and deserialize the child class
+ * object then automatically call the parent class constructor through
+ * constructor chaining. So, it will allocate the default values or constructor
+ * initialized values
  * 
  * But if you implement Serializable interface in Parent class as well means
  * then you can see the parent class as well will get serialized So, the parent
  * class will get assigned with the updated value
+ * 
+ * Note: If the class which implements serializable will be initialized with the
+ * values present in the file while de-serializing. So, it won't call the
+ * constructors of the corresponding class. Here if we don't implement
+ * serializable to the parent class the parent class default constructor will be
+ * called to initialize the values. If the parent class implements serializaeble
+ * means it won't call the default constructor.
  * 
  * @author Surendar
  *

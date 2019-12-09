@@ -15,7 +15,7 @@ public class Student implements Serializable {
 
   // declaring final variable as transient is no-use. Since the variable is final
   // in the compile time the compiler treat it as value not as variable-value
-  // combination.
+  // combination (i.e. Compile time constant)
   // so, it won't have any impact. It will automatically written into the file
   // even though it is declared as transient
   public final transient int collegeId = 100;

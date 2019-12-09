@@ -3,65 +3,65 @@ package main.nio.ex.pgms;
 import java.nio.ByteBuffer;
 
 public class Tablet implements Persistable {
+
   private String brand;
+  private long price;
   private boolean isCellular;
-  private long cost; // in US Dollars
 
-  public Tablet() {
-    brand = "";
+  Tablet() {
   }
 
-  public Tablet(String brand, boolean isCellular, long cost) {
+  Tablet(String brand, long price, boolean isCellular) {
     this.brand = brand;
+    this.price = price;
     this.isCellular = isCellular;
-    this.cost = cost;
   }
 
-  public final String getBrand() {
+  public String getBrand() {
     return brand;
   }
 
-  public final boolean isCellular() {
-    return isCellular;
-  }
-
-  public final long getCost() {
-    return cost;
-  }
-
-  public final void setBrand(String brand) {
+  public void setBrand(String brand) {
     this.brand = brand;
   }
 
-  public final void setCellular(boolean isCellular) {
+  public long getPrice() {
+    return price;
+  }
+
+  public void setPrice(long price) {
+    this.price = price;
+  }
+
+  public boolean isCellular() {
+    return isCellular;
+  }
+
+  public void setCellular(boolean isCellular) {
     this.isCellular = isCellular;
-  }
-
-  public final void setCost(long cost) {
-    this.cost = cost;
-  }
-
-  @Override
-  public void persist(ByteBuffer buffer) {
-    byte[] strBytes = brand.getBytes();
-    buffer.putInt(strBytes.length);
-    buffer.put(strBytes, 0, strBytes.length);
-    buffer.put(isCellular == true ? (byte) 1 : (byte) 0);
-    buffer.putLong(cost);
-  }
-
-  @Override
-  public void recover(ByteBuffer buffer) {
-    int size = buffer.getInt();
-    byte[] rawBytes = new byte[size];
-    buffer.get(rawBytes, 0, size);
-    this.brand = new String(rawBytes);
-    this.isCellular = buffer.get() == 1 ? true : false;
-    this.cost = buffer.getLong();
   }
 
   @Override
   public String toString() {
-    return "Tablet [brand=" + brand + ", isCellular=" + isCellular + ", cost=" + cost + "]";
+    return "Tablet [brand=" + brand + ", price=" + price + ", isCellular=" + isCellular + "]";
+  }
+
+  @Override
+  public void writeData(ByteBuffer buffer) {
+    byte[] b = brand.getBytes();
+    buffer.putInt(b.length);
+    buffer.put(b, 0, b.length);
+    buffer.putLong(price);
+    buffer.put((byte) (isCellular ? 0 : 1));
+  }
+
+  @Override
+  public void readData(ByteBuffer buffer) {
+    int bLength = buffer.getInt();
+    byte[] brandArr = new byte[bLength];
+    buffer.get(brandArr, 0, bLength);
+    this.brand = new String(brandArr);
+    this.price = buffer.getLong();
+    this.isCellular = (buffer.get() == 0 ? true : false);
   }
 }

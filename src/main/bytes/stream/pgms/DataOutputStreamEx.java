@@ -24,7 +24,7 @@ public class DataOutputStreamEx {
 
   public static void main(String[] args) throws IOException {
     try (DataOutputStream dos = new DataOutputStream(
-        new FileOutputStream("G:\\Photon workspace\\Java-projects\\Practice_1\\files\\datastream.ex"))) {
+        new FileOutputStream("G://Photon workspace//Java-projects//Practice_1//files//datastream.ex"))) {
       dos.writeInt(65);
       dos.writeInt(78);
     }
