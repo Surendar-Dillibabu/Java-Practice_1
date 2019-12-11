@@ -25,10 +25,28 @@ public class DataInputStreamEx {
   public static void main(String[] args) throws IOException {
     try (DataInputStream dis = new DataInputStream(
         new FileInputStream("G://Photon workspace//Java-projects//Practice_1//files//datastream.ex"))) {
-      int data = 0;
+      long data = 0;
+      // Return the available byte count. For int type java allocates 4 bytes. Suppose
+      // if the file contains two int values it will return as 8 bytes.
+      // 4 int value means 16 bytes and so on
+      /*System.out.println("Available :" + dis.available());
       while ((data = dis.readInt()) != -1) {
         System.out.print(data + " ");
+      }*/
+
+      // For boolean data type alone the size allocation will be machine dependent
+      // For windows it is allocating as 1 byte for 1 boolean value
+      /*System.out.println("Available :" + dis.available());
+      while ((data = dis.read()) != -1) {
+        System.out.print(((data != 0) ? "true" : "false") + " ");
+      }*/
+
+      // For long data type it is allocation the size as 8 bytes for 1 variable
+      System.out.println("Available :" + dis.available());
+      while ((data = dis.readLong()) != -1) {
+        System.out.print(data + " ");
       }
+
       System.out.println();
     } catch (EOFException ex) {
       System.out.println();

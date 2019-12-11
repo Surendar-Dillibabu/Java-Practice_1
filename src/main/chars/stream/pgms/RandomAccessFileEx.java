@@ -15,6 +15,7 @@ public class RandomAccessFileEx {
 
   public void writeToFile(String filePath, String data, int position) throws IOException {
     RandomAccessFile rf = new RandomAccessFile(filePath, "rw");
+    // set the file pointer position to start read or write
     rf.seek(position);
     rf.write(data.getBytes());
     rf.close();
@@ -24,6 +25,7 @@ public class RandomAccessFileEx {
   public void readFromFile(String filePath, int position, int size) throws IOException {
     RandomAccessFile rf = new RandomAccessFile(filePath, "r");
     byte[] bArr = new byte[size];
+    // set the file pointer position to start read or write
     rf.seek(position);
     rf.read(bArr);
     for (byte b : bArr) {

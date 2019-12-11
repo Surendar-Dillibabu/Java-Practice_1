@@ -1,4 +1,4 @@
-package main.socket.ex.pgms;
+package main.io.ex.pgms;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

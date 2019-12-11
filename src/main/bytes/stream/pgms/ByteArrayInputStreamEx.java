@@ -10,6 +10,13 @@ public class ByteArrayInputStreamEx {
     try (ByteArrayInputStream bis = new ByteArrayInputStream(buf)) {
       int ch = 0;
       while ((ch = bis.read()) != -1) {
+        if (ch == 36) {
+          // skip two bytes after this position. Now make the next position to read is
+          // current_postion = current_postion + 2;
+          bis.skip(2);
+          // Return the remaining bytes alone based on the skip
+          System.out.println("Available bytes to be read :" + bis.available());
+        }
         System.out.println((char) ch);
       }
     }

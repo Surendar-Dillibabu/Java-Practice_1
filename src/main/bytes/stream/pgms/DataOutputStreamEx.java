@@ -25,8 +25,22 @@ public class DataOutputStreamEx {
   public static void main(String[] args) throws IOException {
     try (DataOutputStream dos = new DataOutputStream(
         new FileOutputStream("G://Photon workspace//Java-projects//Practice_1//files//datastream.ex"))) {
-      dos.writeInt(65);
+      // For int type java allocates 4 bytes. So, for one int variable value it will
+      // store the value as byte inside the file with 4 bytes. For 4 int vale it will
+      // allocates the bytes count as 16
+      /*dos.writeInt(65);
       dos.writeInt(78);
+      dos.writeInt(7);
+      dos.writeInt(3);*/
+
+      // For boolean data type alone the size allocation will be machine dependent
+      // For windows it is allocating as 1 byte for 1 boolean value
+      /*dos.writeBoolean(false);
+      dos.writeBoolean(true);*/
+
+      dos.writeLong(10L);
+      dos.writeLong(25L);
+      dos.writeLong(5L);
     }
     System.out.println("Data output stream writting completed");
   }
