@@ -33,5 +33,5 @@ public class BasicChannelEx {
       }
       buffer.clear(); // Now the buffer is empty, ready for the filling
     }
-}
+  }
 }

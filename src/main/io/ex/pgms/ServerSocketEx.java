@@ -1,10 +1,8 @@
 package main.io.ex.pgms;
 
-import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -16,25 +14,23 @@ public class ServerSocketEx {
     while (true) {
       System.out.println("Server waiting for client request");
       Socket client = server.accept();
-      BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
-      StringBuilder reqBuilder = new StringBuilder();
-      String request = null, response = null;
-      while ((request = br.readLine()) != null) {
-        reqBuilder.append(request);
-      }
 
-      String clientMsg = reqBuilder.toString();
+      DataInputStream dis = new DataInputStream(client.getInputStream());
+      String clientMsg = dis.readUTF();
       System.out.println("Client message :" + clientMsg);
-      if (!"exit".equalsIgnoreCase(clientMsg)) {
-        PrintWriter pw = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
-        response = "Hi, " + clientMsg;
-        pw.write(response);
-        pw.close();
+
+      if (!"stop".equalsIgnoreCase(clientMsg)) {
+        DataOutputStream dos = new DataOutputStream(client.getOutputStream());
+        dos.writeUTF("Hi, " + clientMsg);
+
+        dos.flush();
+        dos.close();
       }
 
-      br.close();
+      dis.close();
       client.close();
-      if ("exit".equalsIgnoreCase(clientMsg))
+
+      if ("stop".equalsIgnoreCase(clientMsg))
         break;
     }
     System.out.println("Server shutting down");

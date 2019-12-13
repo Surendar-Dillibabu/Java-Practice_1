@@ -37,7 +37,8 @@ public class SelectorExample {
         SelectionKey ky = (SelectionKey) itr.next();
         if (ky.isAcceptable()) {
           // The new client connection is accepted
-          SocketChannel client = SS.accept();
+          ServerSocketChannel ssc = (ServerSocketChannel) ky.channel();
+          SocketChannel client = ssc.accept();
           client.configureBlocking(false);
           // The new connection is added to a selector
           client.register(selector, SelectionKey.OP_READ);
