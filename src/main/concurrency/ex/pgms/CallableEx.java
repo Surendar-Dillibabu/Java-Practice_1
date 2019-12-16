@@ -1,9 +1,10 @@
-package main.thread.ex.pgms;
+package main.concurrency.ex.pgms;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 /**
  * In this example if you see it is not executing as like thread. Since Callable
@@ -40,6 +41,17 @@ public class CallableEx {
     // Once pool is shut downed you can't initiate next callable. If you try to do
     // so, then it will throw java.util.concurrent.RejectedExecutionException
     // es.submit(sumOfNumObjArr[0]);
+
+    // Callable won't be passed to thread class and execute. Since Thread class only
+    // accepts Runnable as target.
+    // So, we can pass the Callable to FutureTask and then we can pass the
+    // FutureTask object to Thread class since FutureTask internally implements
+    // RunnableFuture. RunnableFuture internally implements Runnable and Future
+    FutureTask<Integer> ft = new FutureTask<>(new SumOfNumbers("futuretask-thread", 5));
+    Thread t = new Thread(ft);
+    t.start();
+    System.out.println("Callable with future task execution is completed.  Sum of numbers of 5 is :" + ft.get());
+
     System.out.println("Main thread completed");
   }
 }

@@ -1,4 +1,4 @@
-package main.thread.ex.pgms;
+package main.concurrent.locks.ex.pgms;
 
 import java.util.concurrent.locks.ReentrantLock;
 

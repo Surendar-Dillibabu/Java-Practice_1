@@ -1,4 +1,4 @@
-package main.thread.ex.pgms;
+package main.concurrency.ex.pgms;
 
 import java.util.concurrent.Callable;
 

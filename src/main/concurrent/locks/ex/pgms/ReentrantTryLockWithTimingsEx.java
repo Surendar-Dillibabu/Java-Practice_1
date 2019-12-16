@@ -1,4 +1,4 @@
-package main.thread.ex.pgms;
+package main.concurrent.locks.ex.pgms;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
@@ -30,12 +30,14 @@ public class ReentrantTryLockWithTimingsEx {
             } catch (InterruptedException e) {
               e.printStackTrace();
             } finally {
-              System.out.println(Thread.currentThread().getName() + " lock count :" + rl.getHoldCount());
+              System.out.println(
+                  Thread.currentThread().getName() + " lock count before releasing inner lock :" + rl.getHoldCount());
               rl.unlock();
             }
           }
         } finally {
-          System.out.println(Thread.currentThread().getName() + " lock count before unlocking outer lock :" + rl.getHoldCount());
+          System.out.println(
+              Thread.currentThread().getName() + " lock count before releasing outer lock :" + rl.getHoldCount());
           rl.unlock();
         }
         System.out.println(Thread.currentThread().getName() + " completes its action");
@@ -46,13 +48,16 @@ public class ReentrantTryLockWithTimingsEx {
 
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     ReentrantTryLockWithTimingsEx obj = new ReentrantTryLockWithTimingsEx();
     Thread t1 = new Thread(obj.new ThreadEx(), "Thread-1");
     Thread t2 = new Thread(obj.new ThreadEx(), "Thread-2");
 
     t1.start();
     t2.start();
+
+    t1.join();
+    t2.join();
 
     System.out.println("Main thread completes its action");
   }
