@@ -39,5 +39,6 @@ public class SynchorizeEx {
     ChildThread3 t2 = new ChildThread3(d, "Deepan");
     t1.start();
     t2.start();
+    t2.setDaemon(true);
   }
 }
