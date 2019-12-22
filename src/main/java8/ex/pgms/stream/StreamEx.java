@@ -1,4 +1,4 @@
-package main.java8.ex.pgms;
+package main.java8.ex.pgms.stream;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -17,5 +17,6 @@ public class StreamEx {
 
     List<String> phones = people.values().stream().flatMap(Collection::stream).collect(Collectors.toList());
     System.out.println(phones);
+
   }
 }

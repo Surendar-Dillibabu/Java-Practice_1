@@ -23,5 +23,6 @@ public class BiConsumerEx {
     };
 
     biConsumerAction.accept(ls1, ls2);
+
   }
 }

@@ -40,7 +40,6 @@ public class ThreadExample {
     t1.start();
     t2.start();
 
-   
   }
 
   // PC (Produce Consumer) class with produce() and
@@ -67,13 +66,13 @@ public class ThreadExample {
     public void consume() throws InterruptedException {
       // this makes the produce thread to run first.
       Thread.sleep(1000);
-      Scanner s = new Scanner(System.in);
+      Scanner sc = new Scanner(System.in);
 
       // synchronized block ensures only one thread
       // running at a time.
       synchronized (this) {
         System.out.println("Waiting for return key.");
-        s.nextLine();
+        sc.nextLine();
         System.out.println("Return key pressed");
 
         // notifies the produce thread that it
@@ -83,6 +82,7 @@ public class ThreadExample {
         // Sleep
         Thread.sleep(2000);
       }
+      sc.close();
     }
   }
 }
